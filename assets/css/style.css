@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.wrapper {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#title, #title2, #questions {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.p, .initials-input, #user-scores {
+    font-size: 18px;
+    color: black;
+    padding:10px;
+}
+
+.centered {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.choice{
+    display: block;
+    margin-top: 10px;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    padding-top: 40px;
+    color: black;
+    font-weight: bold;
+}
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 30px 40px;
+}
+
+.card-body {
+    min-height: 100px;
+    margin-top:50px;
+}
+
+.card-footer::after {
+    content: " ";
+    display: block;
+    width: 100%;
+    background: #e7e9eb;
+    height: 2px;
+}
+
+#textboxid
+{
+    height:25px;
+    font-size:12pt;
+}
+
+
+.btn, .btn-start, .btn-submit {
+    border: none;
+    background-color: rgb(92, 8, 105);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 18px;
+    line-height: 12px;
+    margin: 10px;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+:hover.btn {
+    opacity: 80%;
+}
+
+button[disabled] {
+    cursor: default;
+    background: #c0c7cf;
+}
+
+.float-left {
+    float: left;
+    padding: 10px;
+}
+
+.float-right {
+    float: right;
+    padding: 10px;
+}
+
+
+@media (max-width: 690px) {
+    .btn {
+        font-size: 1rem;
+        margin: 16px 0px 0px 0px;
+        padding: 10px 15px;
+    }
+
+    @media (max-width: 500px) {
+        .btn {
+            font-size: 0.8rem;
+        }
+    }
+}

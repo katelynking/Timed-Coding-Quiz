@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+
+</head>
+
+<body>
+  <p class="float-right" id="countdown"></p>
+  <a href="highscore.html" p class="float-left">View Highscores</a></p>
+
+
+
+
+  <div class="wrapper">
+    <section id="title" class="show">
+      <header>
+        <h1>Coding Quiz Challenge</h1>
+      </header>
+      <div class="card">
+        <p class="centered">
+          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers
+          will penalize your score/time by ten seconds!
+        </p>
+        <div class="centered">
+          <button id="generate" class="btn-start">Start Quiz</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="questions" class="hidden">
+      <header>
+        <h1>Question:</h1>
+      </header>
+      <p>
+      <div class="centered" id="question-prompt"></div>
+      <div class="centered" id="choices"></div>
+      
+      
+    
+
+      <div class="card-footer">
+        <div id="result" class="result"></div>
+        </p>
+    </section>
+  
+
+  <div class="card-body, centered">
+    <section id="end-screen" class="hidden">
+     <header>
+      <h1>All done!</h1>
+     </header>
+      <p>You scored <span id="total-score"></span>%.</p>
+      <p>Enter Initials:
+      <input type="text" id= "initials"/>
+        <button class="btn-submit">Submit</button>
+      </p>
+  
+  </section>
+
+
+    </head>
+
+    <body>
+
+
+
+
+  </div>
+  </div>
+  <div id="user-scores" class="hidden"></div>
+  </div>
+
+
+
+  </style>
+  </div>
+
+
+
+  </div>
+  </div>
+  </div>
+  <script src="./assets/js/questions.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

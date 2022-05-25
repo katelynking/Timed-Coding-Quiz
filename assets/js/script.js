@@ -16,10 +16,6 @@ var choicesEl = document.querySelector("#choices");
 var resultEl = document.getElementById("result");
 var timeLeft = 75;
 
-
-
-
-
 startBtn.addEventListener('click', function (event) {
     event.preventDefault();
     startQuiz();
@@ -73,6 +69,7 @@ function getQuestion() {
 
 
 var score = 0; 
+var totalScore;
 
 function selectionClick() {
     if (this.value !== questions[questionIndex].answer) {
@@ -96,7 +93,7 @@ function selectionClick() {
         getQuestion();
     }
     
-    var totalScore = (score/questions.length) * 100;
+    totalScore = (score/questions.length) * 100;
     console.log(totalScore);
     document.getElementById("total-score").innerHTML = totalScore;
     
@@ -113,10 +110,11 @@ function endQuiz() {
 
 function saveScores() {
     var initials = initialsInput.value.trim();
-    if (initials !== "") {
-        var highScore = JSON.parse(localStorage.getItem("highScore"));
+    if (initials != "") {
+        var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
+        
         var userScore = {
-            score: totalScore,
+            score: score,
             initials: initials
         };
 
@@ -129,11 +127,7 @@ function saveScores() {
 
 submitBtn.onclick = saveScores;
 
-function enterBtnSub(event) {
-    if (event.key === "Enter") {
-        saveScores();
-    }
-};
+
 
 
 

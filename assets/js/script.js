@@ -68,8 +68,7 @@ function getQuestion() {
 };
 
 
-var score = 0; 
-var totalScore;
+var score = 0;
 
 
 function selectionClick() {
@@ -84,7 +83,7 @@ function selectionClick() {
     resultEl.setAttribute("class", "result");
     setTimeout(function() {
         resultEl.setAttribute("class", "hidden");
-    }, 500);
+    }, 750);
 
     questionIndex++;
 
@@ -98,10 +97,11 @@ function selectionClick() {
     
     console.log(totalScore);
     document.getElementById("total-score").innerHTML = totalScore;
+    //totalScore.push(score);
    
     
 };
-
+console.log(score);
 
 
 
@@ -119,7 +119,7 @@ function saveScores() {
         var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
         
         var userScore = {
-            score: totalScore,
+            score: score,
             initials: initials
         };
 
@@ -127,9 +127,10 @@ function saveScores() {
         localStorage.setItem("highScore", JSON.stringify(highScore));
         
         location.href = "highscore.html";
+        console.log(saveScores);
     }
 };
-
+console.log(saveScores);
 submitBtn.onclick = saveScores;
 
 

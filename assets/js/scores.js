@@ -1,6 +1,6 @@
 
 function renderHighscores() {
-  var highScore = JSON.parse(localStorage.getItem("highscores")) || [];
+  var highScore = JSON.parse(localStorage.getItem("highScore")) || [];
 
   highScore.sort(function (x, y) {
     return y.score - x.score;
@@ -10,8 +10,8 @@ function renderHighscores() {
     var listTag = document.createElement("li");
     listTag.textContent = score.initials + ": " + score.score;
 
-    var olEl = document.getElementById("highScore");
-    olEl.appendChild(listTag);
+    var orderedLiEl = document.getElementById("highScore");
+    //orderedLiEl.appendChild(listTag);
   });
 }
 

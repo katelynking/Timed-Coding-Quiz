@@ -2,7 +2,8 @@
 
 Deployed application link: https://katelynking.github.io/Timed-Coding-Quiz/
 
-## Your Task
+
+## Task
 
 The goal is to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code. It will have a clean, polished, and responsive user interface. 
 
@@ -31,3 +32,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+
+
+Screenshot:
+
+![Alt text](timed-coding-quiz-ss.png?raw=true "Optional Title")

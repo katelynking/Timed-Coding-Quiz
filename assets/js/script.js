@@ -71,6 +71,7 @@ function getQuestion() {
 var score = 0; 
 var totalScore;
 
+
 function selectionClick() {
     if (this.value !== questions[questionIndex].answer) {
         timeLeft -= 10;
@@ -94,10 +95,14 @@ function selectionClick() {
     }
     
     totalScore = (score/questions.length) * 100;
+    
     console.log(totalScore);
     document.getElementById("total-score").innerHTML = totalScore;
+   
     
 };
+
+
 
 
 function endQuiz() {
@@ -114,7 +119,7 @@ function saveScores() {
         var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
         
         var userScore = {
-            score: score,
+            score: totalScore,
             initials: initials
         };
 

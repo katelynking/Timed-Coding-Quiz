@@ -10,9 +10,9 @@ var quizScreen = document.querySelector("#questions");
 var endScreen = document.querySelector("#end-screen");
 
 var question = document.getElementById("questions");
-var questionIndex = 0;
+var questionList = 0;
 var questionPrompt = document.querySelector("#question-prompt");
-var choicesEl = document.querySelector("#choices");
+var choicesShown = document.querySelector("#choices");
 var resultEl = document.getElementById("result");
 var timeLeft = 75;
 
@@ -48,11 +48,11 @@ function startQuiz() {
 
 
 
-function getQuestion() {
-    var questionDisplayed = questions[questionIndex];
+function showQuestion() {
+    var questionDisplayed = questions[questionList];
     questionPrompt.textContent = questionDisplayed.prompt;
 
-    choicesEl.textContent = " ";
+    choicesShown.textContent = " ";
 
     questionDisplayed.choices.forEach(function (qChoices, i) {
         var choice = document.createElement("button");
@@ -61,8 +61,8 @@ function getQuestion() {
         choice.setAttribute("value", qChoices);
         
         choice.textContent = i + 1 + ". " + qChoices;
-        choice.onclick = selectionClick;
-        choicesEl.append(choice);
+        choice.onclick = selectionMade;
+        choicesShown.append(choice);
 
     })
 };
@@ -71,8 +71,8 @@ function getQuestion() {
 var score = 0;
 
 
-function selectionClick() {
-    if (this.value !== questions[questionIndex].answer) {
+function selectionMade() {
+    if (this.value !== questions[questionList].answer) {
         timeLeft -= 10;
         resultEl.textContent = "\nIncorrect!";
     } else {
@@ -81,16 +81,16 @@ function selectionClick() {
     }
 
     resultEl.setAttribute("class", "result");
-    setTimeout(function() {
+    resultTimeShown (function() {
         resultEl.setAttribute("class", "hidden");
-    }, 750);
+    }, 600);
 
-    questionIndex++;
+    questionList++;
 
-    if (questionIndex === questions.length) {
+    if (questionList === questions.length) {
         endQuiz();
     } else {
-        getQuestion();
+        showQuestion();
     }
     
     totalScore = (score/questions.length) * 100;
@@ -114,17 +114,18 @@ function endQuiz() {
 
 
 function saveScores() {
-    var initials = initialsInput.value.trim();
+    var initials = initialsInput.val().trim();
+    
     if (initials != "") {
-        var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
-        
         var userScore = {
             score: score,
             initials: initials
         };
-
-        highScore.push(userScore);
+        var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
+        
         localStorage.setItem("highScore", JSON.stringify(highScore));
+
+        highScore.append(userScore);
         
         location.href = "highscore.html";
         console.log(saveScores);

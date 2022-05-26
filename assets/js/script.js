@@ -16,11 +16,14 @@ var choicesShown = document.querySelector("#choices");
 var resultEl = document.getElementById("result");
 var timeLeft = 75;
 
+
+//Buttons
 startBtn.addEventListener('click', function (event) {
     event.preventDefault();
     startQuiz();
 });
 
+//Start Quiz & Timer
 function countdown() {
     timeLeft;
     timeInterval = setInterval(function () {
@@ -33,9 +36,9 @@ function countdown() {
         }
     }, 1000);
     if (timeLeft < 0) {
-        endQuiz(); 
+        endQuiz();
     }
-    
+
 
 };
 
@@ -47,7 +50,7 @@ function startQuiz() {
 };
 
 
-
+//Pans through questions
 function showQuestion() {
     var questionDisplayed = questions[questionList];
     questionPrompt.textContent = questionDisplayed.prompt;
@@ -59,7 +62,7 @@ function showQuestion() {
         choice.setAttribute("class", "choice");
         choice.setAttribute("class", "btn");
         choice.setAttribute("value", qChoices);
-        
+
         choice.textContent = i + 1 + ". " + qChoices;
         choice.onclick = selectionMade;
         choicesShown.appendChild(choice);
@@ -67,10 +70,31 @@ function showQuestion() {
     })
 };
 
+questions = [
+    {
+        prompt: "In JavaScript, what is a block of code called that is used to perform a specific task?",
+        choices: ["String", "Variable", "Declaration", "Function"],
+        answer: "Function"
+    },
+    {
+        prompt: "In JavaScript, what element is used to store multiple values in a single variable?",
+        choices: ["Array", "Variable", "String", "Function"],
+        answer: "Array"
+    },
+    {
+        prompt: "What is a JavaScript element that represents either TRUE or FALSE values?",
+        choices: ["Event", "Condition", "Boolean", "String"],
+        answer: "Boolean"
+    },
+    {
+        prompt: "What is the name of the statement that is used to exit or end a loop?",
+        choices: ["Close statement", "Conditional statement", "Break statement", "Falter statement"],
+        answer: "Break statement"
+    }
+];
 
+//Evaluates selections & gives score
 var score = 0;
-
-
 function selectionMade() {
     if (this.value !== questions[questionList].answer) {
         timeLeft -= 10;
@@ -81,29 +105,26 @@ function selectionMade() {
     }
 
     resultEl.setAttribute("class", "result");
-    setTimeout(function() {
+    setTimeout(function () {
         resultEl.setAttribute("class", "hidden");
     }, 600);
 
     questionList++;
 
+
     if (questionList === questions.length) {
         endQuiz();
+        totalScore = (score / questions.length) * 100;
+        document.getElementById("total-score").innerHTML = totalScore;
+        saveScores(totalScore);
+
     } else {
         showQuestion();
     }
-    
-    totalScore = (score/questions.length) * 100;
-    
-    document.getElementById("total-score").innerHTML = totalScore;
-    saveScores(totalScore);
-   
-    
+
 };
 
-
-
-
+//End of Quiz 
 function endQuiz() {
     clearInterval(timeInterval);
     endScreen.setAttribute("class", "show");
@@ -113,30 +134,28 @@ function endQuiz() {
 
 
 function saveScores() {
-    var initials = initialsInput.value.trim();
-    
     if (initials != '') {
+        var initials = initialsInput.value.trim();
         var userScore = {
-            score: totalScore,
-            initials: initials
+            initials: initials,
+            score: totalScore
         };
-        var highScore = totalScore;
-        
-        localStorage.setItem("highScore", JSON.stringify(highScore));
-        console.log(highScore);
-        console.log(userScore.initials);
-        
-        //location.href = "highscore.html";
-        
     }
+    var user = userScore.initials;
+    var highScore = userScore.score;
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+    console.log(user);
+    console.log(highScore);
+    
 };
 
-submitBtn.addEventListener('click', function(event) {
+submitBtn.addEventListener('click', function (event) {
     event.preventDefault();
     saveScores();
+    location.href = "highscore.html"
 }
 );
-
 
 
 

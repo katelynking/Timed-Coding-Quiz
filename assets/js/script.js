@@ -43,7 +43,7 @@ function startQuiz() {
     homeScreen.setAttribute("class", "hidden");
     quizScreen.setAttribute("class", "show");
     countdown();
-    getQuestion();
+    showQuestion();
 };
 
 

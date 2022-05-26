@@ -95,13 +95,12 @@ function selectionMade() {
     
     totalScore = (score/questions.length) * 100;
     
-    console.log(totalScore);
     document.getElementById("total-score").innerHTML = totalScore;
-    //totalScore.push(score);
+    saveScores(totalScore);
    
     
 };
-console.log(score);
+
 
 
 
@@ -114,25 +113,29 @@ function endQuiz() {
 
 
 function saveScores() {
-    var initials = initialsInput.val().trim();
+    var initials = initialsInput.value.trim();
     
-    if (initials != "") {
+    if (initials != '') {
         var userScore = {
-            score: score,
+            score: totalScore,
             initials: initials
         };
-        var highScore = [] || JSON.parse(localStorage.getItem("highScore"));
+        var highScore = totalScore;
         
         localStorage.setItem("highScore", JSON.stringify(highScore));
-
-        highScore.append(userScore);
+        console.log(highScore);
+        console.log(userScore.initials);
         
-        location.href = "highscore.html";
-        console.log(saveScores);
+        //location.href = "highscore.html";
+        
     }
 };
-console.log(saveScores);
-submitBtn.onclick = saveScores;
+
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    saveScores();
+}
+);
 
 
 

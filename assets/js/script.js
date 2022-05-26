@@ -62,7 +62,7 @@ function showQuestion() {
         
         choice.textContent = i + 1 + ". " + qChoices;
         choice.onclick = selectionMade;
-        choicesShown.append(choice);
+        choicesShown.appendChild(choice);
 
     })
 };
@@ -81,7 +81,7 @@ function selectionMade() {
     }
 
     resultEl.setAttribute("class", "result");
-    resultTimeShown (function() {
+    setTimeout(function() {
         resultEl.setAttribute("class", "hidden");
     }, 600);
 

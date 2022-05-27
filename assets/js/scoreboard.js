@@ -13,9 +13,6 @@ clearBtn.addEventListener('click', function(event) {
 function renderHighscore() {
   var user = localStorage.getItem("user", JSON.stringify(user));
   var highScore = [parseInt(localStorage.getItem("highScore", JSON.stringify(highScore)))];
-  //highScore = parseInt(highScore);
-  //highScores = [] || highScore;
-  console.log(highScore);
 
   highScore.sort (function (a, b) {
     return b.highScore - a.highScore;
@@ -27,7 +24,6 @@ function renderHighscore() {
 
     var displayList = document.querySelector("#highscores");
     displayList.appendChild(list);
-    displayList.setAttribute("class", "wrapper; p; centered");
 
   });
 }

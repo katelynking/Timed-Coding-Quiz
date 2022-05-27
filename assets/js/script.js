@@ -3,7 +3,7 @@ var submitBtn = document.querySelector(".btn-submit");
 
 var initialsInput = document.querySelector("#initials");
 var timerEl = document.getElementById('countdown');
-var highScoreEl = document.querySelector('#user-scores');
+//var highScoreEl = document.querySelector('#user-scores');
 
 var homeScreen = document.querySelector("#title");
 var quizScreen = document.querySelector("#questions");
@@ -132,6 +132,8 @@ function endQuiz() {
 }
 
 
+var user;
+var highScore;
 
 function saveScores() {
     if (initials != '') {
@@ -141,12 +143,12 @@ function saveScores() {
             score: totalScore
         };
     }
-    var user = userScore.initials;
-    var highScore = userScore.score;
+    user = userScore.initials;
+    highScore = userScore.score;
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("highScore", JSON.stringify(highScore));
+    //highScoreEl.textContent = user + ": " + highScore;
     console.log(user);
-    
     
 };
 

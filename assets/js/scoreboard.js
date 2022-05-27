@@ -20,7 +20,8 @@ function renderHighscore() {
 
   highScore.forEach (function (userScore) {
     var list = document.createElement("li");
-    list.textContent = user + ": " + highScore;
+    var name = user.replaceAll('"', '');
+    list.textContent = name + ": " + highScore;
 
     var displayList = document.querySelector("#highscores");
     displayList.appendChild(list);

@@ -11,27 +11,27 @@ clearBtn.addEventListener('click', function(event) {
 
 //Retrieve scores
 function renderHighscore() {
-  localStorage.getItem("user", JSON.stringify(user));
-  localStorage.getItem("highScore", JSON.stringify(highScore));
-  console.log(user);
+  var user = localStorage.getItem("user", JSON.stringify(user));
+  var highScore = [parseInt(localStorage.getItem("highScore", JSON.stringify(highScore)))];
+  //highScore = parseInt(highScore);
+  //highScores = [] || highScore;
   console.log(highScore);
-  
-  var userScore;
 
-  userScore.sort(function (a, b) {
+  highScore.sort (function (a, b) {
     return b.highScore - a.highScore;
-  });
+  }); 
 
-  userScore.forEach(function (userScore) {
+  highScore.forEach (function (userScore) {
     var list = document.createElement("li");
-    list.textContent = userScore.initials+ ": " + userScore.score;
+    list.textContent = user + ": " + highScore;
 
-    var inOrder = document.querySelector("#highScore");
-    inOrder.appendChild(list);
+    var displayList = document.querySelector("#highscores");
+    displayList.appendChild(list);
+    displayList.setAttribute("class", "wrapper; p; centered");
+
   });
 }
 
 
 
-//renderHighscores();
-
+renderHighscore();

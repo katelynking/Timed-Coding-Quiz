@@ -146,9 +146,10 @@ function saveScores() {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("highScore", JSON.stringify(highScore));
     console.log(user);
-    console.log(highScore);
+    
     
 };
+
 
 submitBtn.addEventListener('click', function (event) {
     event.preventDefault();

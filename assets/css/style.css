@@ -134,6 +134,10 @@ button[disabled] {
     padding: 10px;
 }
 
+.li {
+    padding-left: 20px;
+}
+
 
 @media (max-width: 690px) {
     .btn {
